@@ -1,12 +1,52 @@
 {
-  "pages":[
+  "pages": [ 
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/lookxq/lookxq",
+    "pages/looklb/looklb",
+    "pages/index_zx/index_zx",
+    "pages/index_zr/index_zr",
+    "pages/shoucang/shoucang",
+    "pages/looktwoxq/looktwoxq",
+    "pages/search/search" 
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
-  }
+    "navigationBarTitleText": "壁画小程序",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "/images/home_n.png",
+        "selectedIconPath": "/images/home_a.png"
+      },
+      {
+        "pagePath": "pages/index_zx/index_zx",
+        "text": "最新",
+        "iconPath": "/images/new_n.png",
+        "selectedIconPath": "/images/new_a.png"
+      },
+      {
+        "pagePath": "pages/index_zr/index_zr",
+        "text": "最热",
+        "iconPath": "/images/f_n.png",
+        "selectedIconPath": "/images/f_a.png"
+      },
+      {
+        "pagePath": "pages/shoucang/shoucang",
+        "text": "收藏",
+        "iconPath": "/images/my_n.png",
+        "selectedIconPath": "/images/my_a.png"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "debug": true
 }

@@ -1,0 +1,23 @@
+<view class="page">
+  <!-- 二级列表总信息循环体 -->
+  <view style="margin-left:30rpx">{{getById.ret.content}}</view>
+  <view style="margin-left:30rpx;font-size:12px;color:#aaa;padding-bottom:80rpx">内容详情</view>
+  <!-- 二级列表总信息循环体结束 -->
+</view>
+<!-- 循环体 -->
+<!-- 文字 -->
+<block wx:for="{{getById.ret.tw_steps}}">
+  <block wx:if="{{item.text != null}}">
+    <text style="margin-left:30rpx;padding-bottom:30rpx">{{item.text}}</text>
+  </block>
+  <!-- 图片 -->
+  <block wx:if="{{item.img != null}}">
+    <image src='{{item.img}}' bindtap="clickImage" style="position:relative;width:100%;height:500rpx;border-radius:5rpx" data-index='{{index}}'>
+    </image>
+  </block>
+  <!-- 视频 -->
+  <block wx:if="{{item.video != null}}">
+    <video src="{{item.video}}" style="width:100%"></video>
+  </block>
+</block>
+<!-- 循环体结束 -->

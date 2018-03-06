@@ -1,0 +1,27 @@
+<view class="page">
+  <!-- 二级列表总信息循环体 -->
+  <view style="margin-left:30rpx">壁画详情</view>
+  <view style="margin-left:30rpx;font-size:12px;color:#aaa">详情描述</view>
+  <!-- 二级列表总信息循环体结束 -->
+
+<!-- 循环体 -->
+  <view class="weui-flex">
+    <view class="weui-flex__item">
+      <view class="placeholder">
+        <view style="position:relative;">
+          <image src='../../images/xsz_back.png' style="position:relative;width:96%;height:420rpx;border-radius:5rpx">
+          </image>
+          <!-- 收藏按钮 -->
+          <image src="../../images/sc_n.png" style="right:5%;;bottom:5%;position:absolute;width:80rpx;height:80rpx;" bindtap="click"></image> 
+          <image src="../../images/sc_a.png" style="right:5%;;bottom:5%;position:absolute;width:80rpx;height:80rpx;" hidden='{{!show}}' bindtap="click"></image>
+        </view>
+      </view>
+      <!-- 不属于weui -->
+      <text decode="{{true}}" style="margin-left:50rpx;color:black">名称</text>
+      <text style="margin-left:35rpx;color:black;border-radius:10rpx;border:1px solid pink;color:pink">标签1</text>
+      <text style="margin-left:35rpx;color:black;border-radius:10rpx;border:1px solid blue;color:blue">标签2</text>
+      <!-- 不属于weui结束 -->
+    </view>
+  </view>
+  <!-- 循环体结束 -->
+</view>

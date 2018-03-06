@@ -1,21 +1,162 @@
-/**index.wxss**/
-.userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+/* index.wxss */
+.c-state1{  
+  transform: rotate(0deg) scale(1) translate(35%,0%);   
+  -webkit-transform: rotate(0deg) scale(1) translate(35%,0%);   
+}   
+.caidan{ 
+  position:absolute; 
+  width: 33%; 
+}
+.text{
+  border-bottom: 2px solid #ccc;
+  margin: 50rpx 30rpx;
+  background-color: white;
+}
+.textImg{
+  width: 210rpx;
+  height: 210rpx; 
+}
+.textTitle{
+  color: black;
+  
+  margin-top: -180rpx;
+  margin-left: 240rpx;
+  font-size:46rpx; 
+}
+.textTag{
+  color: black;
+  text-align: center;
+  width: 210rpx;
+  font-size: 30rpx;
+  margin-top: 15rpx;
+  margin-left: 240rpx;
+  margin-bottom: 80rpx;
+  border: 2px solid blue;
+  border-radius: 2px;
+}
+.searchbar-result{
+    margin-top: 0;
+    font-size: 14px;
+}
+.searchbar-result:before{
+    display: none;
+}
+.type{
+    padding: 36rpx 0 36rpx 0;
+}
+.typelist{
+  position:absolute;
+  top: 78rpx;
+}
+.weui-panel{
+  margin-top: 24rpx;
+} 
+.index-search-input {
+position:relative;
+-webkit-box-flex:1;
+-webkit-flex:auto;
+flex:auto;
+background:#fff;
+border:1rpx solid #e6e6ea;
+border-radius:10rpx;
+height:80rpx;
+line-height:80rpx;
+}
+.searchbar-result{
+    margin-top: 0;
+    font-size: 14px;
+}
+.searchbar-result:before{
+    display: none;
+}
+.weui-cell{
+    padding: 12px 15px 12px 35px;
+}
+/* 以上是搜索 */ 
+ page,
+.page,
+.page__bd{
+    height: 100%;
+}
+.page__bd{
+    padding-bottom: 0;
+}
+.weui-tab__content{ 
+    text-align: center;
+}
+/* 以上头tab */
+/* 2018.2.24 XJ*/
+.personal_image{
+    z-index: 100;
+    position: absolute;
+    right:2.5%;
+    width: 34rpx;
+    height: 20rpx;
+    margin:40rpx 20rpx 40rpx 0;
+    transition: All 0.4s ease;  
+    -webkit-transition: All 0.4s ease;
+}
+.rotateRight{
+    transform: rotate(180deg); 
+}
+.searchbar-result {
+  margin-top: 0;
+  font-size: 14px;
 }
 
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
+.searchbar-result:before {
+  display: none;
 }
 
-.userinfo-nickname {
-  color: #aaa;
+.weui-cell {
+  padding: 12px 15px 12px 35px;
 }
 
-.usermotto {
-  margin-top: 200px;
+.page_bd {
+  padding: 5px;
+  width: 15%;
+  font-size: 15px
+}
+
+.body_head {
+  border: 1px solid;
+  border-color: beige;
+  /* padding: 10px; */
+}
+
+.display_show {
+  display: block;
+  border: 1px solid;
+  border-color: beige;
+}
+
+.display_none {
+  display: none;
+}
+
+.swiper {
+  height: 400rpx;
+  width: 100%;
+}
+
+.swiper image {
+  height: 100%;
+  width:94%;
+  border-radius:20rpx
+}
+.placeholder{
+    margin: 5px;
+    padding: 0 8px;
+    text-align: center; 
+    color: #cfcfcf;
+}
+.bitu{
+  width:49%; 
+  float:left;
+}
+.bihua-bg{
+  float:left;
+  margin:0rpx;
+  width:50%;
+  height:330rpx;
 }

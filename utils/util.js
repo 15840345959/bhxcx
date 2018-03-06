@@ -1,5 +1,5 @@
 //测试标识
-var TESTMODE = true;
+var TESTMODE = false;
 //服务器地址
 var SERVER_URL = "https://waibao.isart.me";
 var DEBUG_URL = "http://localhost/waibaoSrv/public/";
@@ -37,7 +37,33 @@ function wxRequest(url, param, method, successCallback, errorCallback) {
     }
   });
 }
+/* 以下    By XJ*/    
+//更新用户信息以防无 加入手机号
+function updateById(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/api/bihua/user/updateById', param, "POST", successCallback, errorCallback)
+}
+//获取用户信息
+function getByUserId(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/api/bihua/user/getById', param, "GET", successCallback, errorCallback)
+}
+//轮播图
+function getADList(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/api/bihua/ad/getList', param, "GET", successCallback, errorCallback)
+}
+//首页壁画
+function getListByCon(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/api/bihua/bihua/getListByCon', param, "GET", successCallback, errorCallback)
+}  
+//获取一级分类
+function getListlevel1(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/api/bihua/level1/getList', param, "GET", successCallback, errorCallback) 
+}
+//获取二级分类
+function getListLevel2(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/api/bihua/level2/getListByLevel1Id', param, "GET", successCallback, errorCallback)
+}
 
+/*以上    By XJ*/
 //获取七牛token
 function getQiniuToken(param, successCallback, errorCallback) {
   wxRequest(SERVER_URL + '/api/bihua/user/getQiniuToken', param, "GET", successCallback, errorCallback)
@@ -69,6 +95,44 @@ function getByIdWithToken(param, successCallback, errorCallback) {
 
 }
 
+//获取最新壁画
+function getNewbihua(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/api/bihua/bihua/getListByCon', param, "GET", successCallback, errorCallback)
+
+}
+//获取最热壁画
+function getHotbihua(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/api/bihua/bihua/getListByCon', param, "GET", successCallback, errorCallback)
+
+} 
+//获取根据用户ID收藏的壁画
+function getListByUserId(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/api/bihua/favor/getListByUserId', param, "GET", successCallback, errorCallback)
+
+}
+//收藏壁画
+function collBihua(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/api/bihua/favor/collBihua', param, "POST", successCallback, errorCallback)
+
+}
+//取消收藏壁画
+function cancelCollBihua(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/api/bihua/favor/cancelCollBihua', param, "POST", successCallback, errorCallback)
+
+}  
+//收藏壁画的修改名称
+function setBihuaName(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/api/bihua/favor/setBihuaName', param, "POST", successCallback, errorCallback) 
+}
+
+//根据名称搜索壁画
+function search(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/api/bihua/bihua/search', param, "POST", successCallback, errorCallback) 
+}
+//轮播详情
+function getById(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/api/bihua/ad/getById', param, "GET", successCallback, errorCallback)
+}
 ///////////////////////////////////////////////
 
 // 转换真实地址
@@ -556,7 +620,7 @@ function gcj02towgs84(lng, lat) {
   return location
 }
 
-module.exports = {
+module.exports = { 
   //http request function
   getQiniuToken: getQiniuToken, 
   getOpenId: getOpenId,
@@ -580,5 +644,20 @@ module.exports = {
   navigateToIndex: navigateToIndex,	//跳转到首页
   //other function
   getDiffentTime:getDiffentTime,
-  gcj02towgs84: gcj02towgs84
+  gcj02towgs84: gcj02towgs84,
+  getADList: getADList,//轮播图
+  getListByCon: getListByCon,//壁画图
+  getListlevel1:getListlevel1,//一级分类
+  getListLevel2: getListLevel2,//二级分类
+  getNewbihua: getNewbihua,//获取最新壁画
+  getHotbihua: getHotbihua,//获取最热壁画
+  getListByUserId: getListByUserId,//获取收藏的壁画
+  collBihua: collBihua,//收藏壁画
+  cancelCollBihua: cancelCollBihua,//取消收藏壁画
+  setBihuaName: setBihuaName,   //修改收藏的壁画名称
+  search: search,//搜索页
+  getById: getById,//轮播详情
+  updateById: updateById,//更新用户信息
+  getByUserId: getByUserId//获取用户信息
+  
 } 

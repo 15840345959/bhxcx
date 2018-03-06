@@ -1,0 +1,88 @@
+<view class="page" style="background:#fff">
+  <!-- 搜索开始 -->
+  <view class="page__bd">
+    <view class="weui-search-bar" bindtap='searchBH'>
+      <view class="weui-search-bar__form">
+        <view class="weui-search-bar__box">
+          <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+          <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
+        </view>
+        <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+          <icon class="weui-icon-search" type="search" size="14"></icon>
+          <view class="weui-search-bar__text">搜索笔画名称</view>
+        </label>
+      </view>
+    </view>
+  </view>
+  <!-- 搜索结束 -->
+  <!-- 循环体 -->
+  <block wx:for="{{Hotbihua}}" wx:for-index="index">
+    <view class='bai'>
+      <view class="weui-flex">
+        <view class="weui-flex__item" style="position:relative">
+          <view class="placeholder">
+            <view style="position:relative;">
+              <image src='{{item.img}}' bindtap="clickImage" data-index='{{index}}' style="width:96%;height:460rpx;position:relative;border-radius:5rpx"></image>
+            </view>
+          </view>
+          <text decode="{{true}}" style="margin-left:50rpx;color:black">{{item.name}}</text>
+          <view style="position:absolute;right:8%;">
+            <!-- 收藏按钮 -->
+            <view catchtap="click" data-id='{{index}}' data-bihuaId='{{item.id}}'>
+              <image hidden='{{item.check}}' src="../../images/sc_n.png" style="right:8%;bottom:5%;position:absolute;width:50rpx;height:50rpx;" bindtap="showToast"></image>
+              <image hidden='{{!item.check}}' src="../../images/sc_a.png" style="right:8%;bottom:5%;position:absolute;width:50rpx;height:50rpx;"></image>
+            </view>
+            <!-- 收藏按钮 -->
+          </view>
+          <view>
+            <!-- 循环标签 -->
+            <block wx:for="{{item.tags}}" wx:for-index="tag_index" wx:for-item="tag_item">
+              <text style="font-size:14px;margin-left:50rpx;color:black;border-radius:10rpx;border:1px solid pink;color:pink">{{tag_item.name}}</text>
+            </block>
+            <!-- 循环标签结束 -->
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+  <!-- 循环体结束 -->
+
+  <view style="height:500rpx;background:#fff"></view>
+</view>
+
+
+
+<!--自定义toast按钮-->
+<view style="{{isShowFailToast?'position:fixed;':''}}">
+  <view bindtap="clickBtn" class="btn" style="display:none">button</view>
+</view>
+
+<!--mask-->
+<view class="toast_mask" wx:if="{{isShowFailToast}}"></view>
+<!--以下为toast显示的内容-->
+<view class="toast_content_box" style="top:10px" wx:if="{{isShowFailToast}}">
+  <view class="toast_content">
+    <view class="toast_content_text">
+      {{toastText}}
+    </view>
+  </view>
+</view>
+<!-- 自定义toast结束 -->
+
+
+
+<view class="animation-element-wrapper {{showAlert ? 'hiddenScroll':''}}" style="visibility:{{showAlert ? 'visible':'hidden'}}">
+
+  <view catchtap='sdafdasf' style='width:80%;height:30%;margin:35% 10%;background-color:white;border-radius:10rpx;'>
+    <view class='flex-row center-style' style='border:1rpx solid #9C9C9C;width:80%;height:100rpx;margin:50rpx 10%;'>
+      <input style='height:100rpx;line-height:100rpx;margin-left:10rpx;width:300rpx;' type='number' placeholder="输入手机号继续收藏" bindinput="getInput"></input>
+    </view>
+    <view class="placeholder">
+      <view style="text-align:center;margin-left:25%">
+        <button style="float:left;margin-right:60rpx" bindtap="updateById">确定</button>
+        <button style="float:left" bindtap="hiddonToast">返回</button>
+      </view>
+    </view>
+
+  </view>
+</view>

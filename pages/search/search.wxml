@@ -1,0 +1,65 @@
+
+
+<view class="index-search-botton white-bg search-padding">
+  <view class="index-search-input">
+    <view class="index-search-bar__box weui-flex" style="position:relative">
+      <view class="bar-img weui-flex__item serach-input_box"> 
+        <image src="../../images/search_icon.png" style="position:absolute;margin-left:230rpx;width:22px;height:22px;margin-top:25rpx" bindtap="search"></image> 
+        <input type="text" style="margin-left:270rpx;font-size:15px" class="index-search-font padding-top-10 search-input" bindinput="getTitle" placeholder="输入壁画名称" />
+      </view> 
+    </view>
+  </view>
+</view> 
+<!-- 第一次进来搜索页 -->
+<view class='{{no_view_hidden_w}}'> 
+<view class="placeholder" style="margin-top:150rpx">
+<image src="../../../images/no.png" style="width:50%;height:250rpx"></image>
+</view>
+<view>
+<view class="placeholder">输入名称搜索喜爱的壁画吧!</view>
+</view>
+</view>
+<!-- 第一次进来搜索页结束 --> 
+<!-- 输入无信息 -->
+<view class='{{no_view_hidden}}'> 
+<view class="placeholder" style="margin-top:200rpx">
+<image src="../../../images/no.png" style="width:50%;height:250rpx"></image>
+</view>
+<view>
+<view class="placeholder">暂无此笔画名称，换个试试吧!</view>
+</view>
+</view>
+<!-- 输入无信息结束 --> 
+    <view class="page" style="background:#fff"> 
+  <!-- 循环体 -->
+  <block wx:for="{{search}}" wx:for-index="index" wx:for-item="item">
+    <view class='bai'>
+      <view class="weui-flex">
+        <view class="weui-flex__item" style="position:relative">
+          <view class="placeholder">
+            <view style="position:relative;">
+              <image src='{{item.img}}' style="width:96%;height:460rpx;position:relative;border-radius:5rpx"></image> 
+            </view>
+          </view>
+          <text decode="{{true}}" style="margin-left:50rpx;color:black">{{item.name}}</text>
+            <view style="position:absolute;right:8%;">
+            <!-- 收藏按钮 -->
+              <view bindtap="click" data-id='{{index}}' data-bihuaId='{{item.id}}'>
+                <image src="../../images/sc_n.png" style="right:8%;;bottom:5%;position:absolute;width:50rpx;height:50rpx;"></image> 
+              </view>
+              <!-- 收藏按钮 -->
+            </view>
+           <view>   
+          <!-- 循环标签 -->
+          <block wx:for="{{item.tags}}" wx:for-index="tag_index" wx:for-item="tag_item">
+            <text style="font-size:14px;margin-left:50rpx;color:black;border-radius:10rpx;border:1px solid pink;color:pink">{{tag_item.name}}</text>
+          </block>
+          <!-- 循环标签结束 -->
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+  <!-- 循环体结束 -->
+  <view style="height:500rpx;background:#fff"></view>
+</view>
