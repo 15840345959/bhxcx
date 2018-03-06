@@ -1,15 +1,20 @@
 // pages/search/search.js
 var util = require('../../utils/util.js')
 var vm = null
-Page({
 
+var page_count = 1;
+
+//重新搜索
+var new_loadding_flag = true;
+
+Page({
   /**
    * 页面的初始数据
    */
   data: {
-    data: [],//设置显示隐藏的data
-    inputVal: "",//搜索框值 
-    no_view_hidden: "hidden",
+    search_word: "",
+    bihuas: [],
+    no_view_hidden: 'hidden',
   },
 
   /**
@@ -17,90 +22,64 @@ Page({
    */
   onLoad: function (options) {
     vm = this;
+    page_count = 1;
     wx.setNavigationBarTitle({
       title: '搜索壁画'
     })
   },
-  //搜索框
-  getTitle: function (e) {
-    console.log("输入框的文字：" + e.detail.value)
-    vm.setData({
-      inputVal: e.detail.value,
+  //输入搜索内容
+  inputSearchWord: function (e) {
+    console.log("inputRealName e:" + JSON.stringify(e));
+    this.setData({
+      search_word: e.detail.value
     })
   },
-  //模糊查询图
-  search: function () {
+
+  //点击搜索
+  clickSearch: function () {
+    console.log("clickSearch");
+    new_loadding_flag = true;   //设置为重新加载
+    page_count = 1;
+    vm.searchBihua();
+  },
+
+  //搜索壁画
+  searchBihua: function () {
     var param = {
-      search_word: vm.data.inputVal
+      search_word: vm.data.search_word,
+      page: page_count,
     }
     // console.log("paramm : " + JSON.stringify(res))
     util.search(param, function (res) {
       console.log("search : " + JSON.stringify(res))
       if (res.data.code == "200" && res.data.result == true) {
+        var bihuas = vm.data.bihuas
+        if (!new_loadding_flag) {
+          bihuas = bihuas.concat(res.data.ret.data);
+        } else {
+          bihuas = res.data.ret.data
+          new_loadding_flag = false;
+        }
+        console.log("after concat : " + JSON.stringify(bihuas))
         vm.setData({
-          search: res.data.ret,
+          bihuas: bihuas
         })
-        if (vm.data.inputVal != null) {//输入 但数据库无
-          console.log("搜索了但没值")
+        page_count++;
+        //是否展示未找到内容的页面
+        if (vm.data.bihuas.length <= 0) {
           vm.setData({
-            no_view_hidden: "",
-            no_view_hidden_w: "hidden"
+            no_view_hidden: ''
           })
-        }
-        if (res.data.ret != '') {//点击搜索 默认是数据全出现 
+        } else {
           vm.setData({
-            no_view_hidden: "hidden",
-            no_view_hidden_w: "hidden"
-          })
-        }
-        if (vm.data.inputVal == null) {//不输入 点击搜索按钮时
-          vm.setData({
-            no_view_hidden: "hidden",
-            no_view_hidden_w: "hidden"
+            no_view_hidden: 'hidden'
           })
         }
       } else {
-        // util.showToast(ret.data.message);
+        util.showToast(ret.data.message);
       }
-    }, function () {
-      console.log("错误回调")
     })
   },
-  click: function (e) {//显示或隐藏收藏按钮
-    console.log("321" + JSON.stringify(e))
-    var id = e.currentTarget.dataset.id//得到索引
-    var bihuaId = e.currentTarget.dataset.bihuaid//得到壁画ID    
-    var search = vm.data.search
-    search[id].check = search[id].check
-    //console.log("Newbihua : " + JSON.stringify(Newbihua[id]))
-
-
-    //未收藏 存入方法
-    var param_a = {
-      bihua_id: bihuaId//壁画ID
-    }
-    util.collBihua(param_a, function (res) {//收藏壁画 传值需要壁画的ID
-      if (res.data.code == "200" && res.data.result == true) {//第一次收藏是这种结果 
-        wx.showToast({
-          title: '成功',
-        })
-        search[id].collect = res.data.ret.id
-        vm.setData({
-          search: search,
-        })
-        console.log("111" + JSON.stringify(res))
-      } else {
-        wx.showToast({
-          title: "您已经收藏过啦",
-        })
-      }
-    }, function () {
-      console.log("错误回调")
-    })
-
-
-  },
-
 
   onReady: function () {
 
@@ -138,7 +117,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    vm.searchBihua();
   },
 
   /**

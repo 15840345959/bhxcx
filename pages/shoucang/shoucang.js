@@ -2,24 +2,25 @@ var util = require('../../utils/util.js')
 var inputinfo = ""
 var app = getApp()
 var vm = null
+
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    shoucang: [],//收藏壁画
-    edit_bihua: [],//修改收藏壁画的名称
-    isNall: true,    //是否为空
-    data: [],
+    no_view_hidden: 'hidden',
+    favors: [],//收藏壁画
     showAlert: false,//显示弹窗
     toast: "",//toast
     id: '',//收藏id
+    index: 0,  //收藏数组的index值
     //toast默认不显示  
     isShowFailToast: false
   },
   click_qxsc: function (e) {//取消弹出框
-    console.log("asdf" + JSON.stringify(e))
+    console.log("click_qxsc" + JSON.stringify(e))
     wx.showModal({
       title: '取消收藏',
       content: '忍心抛弃吗>_<',
@@ -62,9 +63,9 @@ Page({
       if (res.data.code == "200" && res.data.result == true) {
         var data = res.data.ret//定义显示隐藏用到的data
         vm.setData({
-          shoucang: res.data.ret
+          favors: res.data.ret
         })
-        if (data.length == 0) {//如果收藏页面数据是空
+        if (vm.data.favors.length <= 0) {//如果收藏页面数据是空
           vm.setData({
             no_view_hidden: ""//so显示 未收藏的提示页面
           })
@@ -100,17 +101,16 @@ Page({
       console.log("错误回调")
     })
   },
-
-
   //显示弹窗
   showToast: function (e) {
-    console.log("111" + JSON.stringify(e))
+    console.log("showToast" + JSON.stringify(e))
     vm.setData({
-      id: e.target.dataset.id,
-      showAlert: true
+      id: e.currentTarget.dataset.id,
+      index: e.currentTarget.dataset.index,
+      showAlert: true,
+      toast: '',
     })
   },
-
   //隐藏弹窗
   hiddonToast: function () {
     vm.setData({ showAlert: false })
@@ -124,7 +124,6 @@ Page({
       toast: value//设置进去
     })
   },
-
 
   showFailToast: function () {
     var _this = this;
@@ -141,6 +140,7 @@ Page({
       });
     }, _this.data.count);
   },
+
   /* 点击按钮 */
   clickBtn: function () {
     console.log("你点击了按钮")
@@ -151,8 +151,6 @@ Page({
     });
     this.showFailToast();
   },
-
-
 
 
   /**

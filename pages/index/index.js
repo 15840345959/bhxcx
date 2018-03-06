@@ -144,7 +144,7 @@ Page({
   },
   //分享
   onShareAppMessage: function () {  
-    var title ="我分享给你的小程序看一下吧";
+    var title ="多多壁画，任君挑选";
     var path = '/pages/index/index';
     return {
       title: title, 

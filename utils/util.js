@@ -98,8 +98,8 @@ function getByIdWithToken(param, successCallback, errorCallback) {
 //获取最新壁画
 function getNewbihua(param, successCallback, errorCallback) {
   wxRequest(SERVER_URL + '/api/bihua/bihua/getListByCon', param, "GET", successCallback, errorCallback)
-
 }
+
 //获取最热壁画
 function getHotbihua(param, successCallback, errorCallback) {
   wxRequest(SERVER_URL + '/api/bihua/bihua/getListByCon', param, "GET", successCallback, errorCallback)
@@ -620,6 +620,17 @@ function gcj02towgs84(lng, lat) {
   return location
 }
 
+//判断是否需要跳转到设置信息页面
+function isNeedNavigateToSetMyInfoPage() {
+  var userInfo = getApp().globalData.userInfo;
+  if (judgeIsAnyNullStr(userInfo.phonenum, userInfo.real_name)) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+
 module.exports = { 
   //http request function
   getQiniuToken: getQiniuToken, 
@@ -638,6 +649,7 @@ module.exports = {
   judgeIsAnyNullStr: judgeIsAnyNullStr,
   getToday: getToday,
   isPoneAvailable: isPoneAvailable,
+  isNeedNavigateToSetMyInfoPage: isNeedNavigateToSetMyInfoPage,
   //navigation function
   navigateBack: navigateBack,   //进行页面跳回
   navigateToRegister: navigateToRegister,  //跳转到注册页面

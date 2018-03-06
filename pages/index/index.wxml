@@ -1,62 +1,61 @@
- 
-<view  class="caidan" wx:if="{{open}}">  
-        <block wx:for="{{level1}}" wx:key="*this">
-          <view class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on white-bg' : ''}}" bindtap="tabClick" data-id="{{index}}" id="{{index}}"> 
-            <view class="weui-navbar__title">{{item.name}}</view>
-          </view>
-        </block>  
-</view> 
+<view class="caidan" wx:if="{{open}}">
+  <block wx:for="{{level1}}" wx:key="*this">
+    <view class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on white-bg' : ''}}" bindtap="tabClick" data-id="{{index}}" id="{{index}}">
+      <view class="weui-navbar__title">{{item.name}}</view>
+    </view>
+  </block>
+</view>
 <view class="neirong {{open ? 'c-state1' : ''}}">
-<!-- 以外是菜单 -->
-<view class="page" style="background:#fff"> 
+  <!-- 以外是菜单 -->
+  <view class="page" style="background:#fff">
     <!-- 搜索开始 -->
-  <view class="page__bd">
-    <view class="weui-search-bar"> 
-    <image bindtap="tap_change" src="../../images/list.png" style="width:30px;height:30px;"></image> 
-      <view class="weui-search-bar__form" bindtap='searchBH'>
-        <view class="weui-search-bar__box">
-          <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
-          <input type="text" class="weui-search-bar__input"  placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
+    <view class="page__bd">
+      <view class="weui-search-bar">
+        <image bindtap="tap_change" src="../../images/list.png" style="width:26px;height:26px;margin-top:2px;" class='margin-right-15'></image>
+        <view class="weui-search-bar__form" bindtap='searchBH'>
+          <view class="weui-search-bar__box">
+            <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+            <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
+          </view>
+          <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+            <icon class="weui-icon-search" type="search" size="14"></icon>
+            <view class="weui-search-bar__text">搜索壁画名称</view>
+          </label>
         </view>
-        <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
-          <icon class="weui-icon-search" type="search" size="14"></icon>
-          <view class="weui-search-bar__text">搜索壁画名称</view>
-        </label>
       </view>
-    </view> 
-  <!-- 搜索结束 -->
-    <view class="weui-tab"> 
+      <!-- 搜索结束 -->
+      <view>
         <view class="weui-tab__content">
-         <!-- 内容开始 -->
-          <!-- 轮播图 --> 
-          <swiper class="swiper" indicator-dots="true" autoplay="true" interval="5000" duration="1000">
+          <!-- 内容开始 -->
+          <!-- 轮播图 -->
+          <swiper indicator-dots="true" autoplay="true" interval="5000" duration="1000">
             <block wx:for="{{ad}}" wx:for-index="index">
               <swiper-item>
-                <image src="{{item.img}}" class="slide-image" mode="aspectFill" catchtap="click_lb" data-id="{{item.id}}"/>
+                <image src="{{item.img}}?imageView2/1/w/600/h/300/interlace/1/q/75" class="slide-image" data-id="{{item.id}}" style='width:100%;' />
               </swiper-item>
             </block>
-          </swiper> 
+          </swiper>
           <view class="weui-flex">
             <view class="weui-flex__item">
               <view class="placeholder">
                 <!-- 风格类型图 -->
                 <image src="../../images/style.jpg" style="width:100%;height:100rpx"></image>
                 <!--壁画循环体开始 -->
-                <block wx:for="{{level2}}" wx:for-index="index"> 
-                    <view class='bihua-bg'  catchtap="click_twoxq" data-id="{{item.id}}">
-                      <image class="bitu" src="{{item.img}}" style="border-radius:20rpx;margin:8rpx;width:330rpx;height:260rpx;"></image>
-                      <view style="width:330rpx;height:230rpx;line-height:30rpx;color:black">{{item.name}}</view>
-                    </view> 
+                <block wx:for="{{level2}}" wx:for-index="index">
+                  <view class='bihua-bg' catchtap="click_twoxq" data-id="{{item.id}}">
+                    <image class="bitu" src="{{item.img}}?imageView2/1/w/400/h/300/interlace/1/q/75" style="border-radius:6rpx;margin:8rpx;width:330rpx;height:260rpx;"></image>
+                    <view class='font-size-16' style='color:black;'>{{item.name}}</view>
+                  </view>
                 </block>
                 <!--  壁画循环体结束 -->
               </view>
             </view>
           </view>
-          <!-- 内容结束 -->  
+          <!-- 内容结束 -->
+        </view>
       </view>
     </view>
   </view>
-</view> 
-<!-- 以外是菜单 --> 
+  <!-- 以外是菜单 -->
 </view>
-<view style="height:300rpx;background:#fff"></view>
+<view style="height:30rpx;background:#fff"></view>

@@ -1085,7 +1085,7 @@ icon {
 }
 
 .weui-navbar__item.weui-bar__item_on {
-  color: #1aad19;
+  color: #5e7dfe;
 }
 
 .weui-navbar__slider {
@@ -1128,7 +1128,7 @@ icon {
 
 .weui-search-bar {
   position: relative;
-   padding: 10px 20px; 
+  padding: 10px 20px;
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -1169,7 +1169,7 @@ icon {
   position: relative;
   padding-left: 30px;
   padding-right: 30px;
-  height:60rpx;
+  height: 60rpx;
   width: 100%;
   box-sizing: border-box;
   z-index: 1;
