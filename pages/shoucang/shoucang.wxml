@@ -61,7 +61,7 @@
 <view class="animation-element-wrapper font-size-14 {{showAlert ? 'hiddenScroll':''}}" style="visibility:{{showAlert ? 'visible':'hidden'}}">
   <view style='width:80%;height:25%;margin:35% 10%;background-color:white;border-radius:10rpx;'>
     <view class='flex-row center-style' style='border:1rpx solid #9C9C9C;width:80%;height:100rpx;margin:50rpx 10%;'>
-      <input style='height:100rpx;line-height:100rpx;margin-left:10rpx;width:300rpx;' type='number' placeholder="给壁画进行备注吧" bindinput="getInput" value='{{toast}}'></input>
+      <input style='height:100rpx;line-height:100rpx;margin-left:10rpx;width:300rpx;' type='text' placeholder="给壁画进行备注吧" bindinput="getInput" value='{{toast}}'></input>
     </view>
     <view class="placeholder">
       <view style="text-align:center;">
