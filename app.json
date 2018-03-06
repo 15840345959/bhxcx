@@ -1,5 +1,5 @@
 {
-  "pages": [ 
+  "pages": [
     "pages/index/index",
     "pages/logs/logs",
     "pages/lookxq/lookxq",
@@ -8,7 +8,7 @@
     "pages/index_zr/index_zr",
     "pages/shoucang/shoucang",
     "pages/looktwoxq/looktwoxq",
-    "pages/search/search" 
+    "pages/search/search"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -17,6 +17,10 @@
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
+    "color": "#8A8A8A",
+    "borderStyle": "white",
+    "selectedColor": "#5E7DFE",
+    "backgroundColor": "#ffffff",
     "list": [
       {
         "pagePath": "pages/index/index",
