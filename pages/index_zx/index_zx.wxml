@@ -8,16 +8,16 @@
         <view style="position:relative;" catchtap="onClickBihua" data-index="{{index}}">
           <image src="{{item.img}}?imageView2/1/w/600/h/300/interlace/1/q/75" class="tw-img" mode="aspectFill"></image>
           <view class="tw-img mask-div-black"></view>
-          <view class="font-size-16 tw-title text-oneline tw-title-div" style="background-image: url('../../images/text_bmask.png');">
+          <!-- <view class="font-size-16 tw-title text-oneline tw-title-div" style="background-image: url('../../images/text_bmask.png');">
             <text class="margin-left-10" style="margin-right:50px;">{{item.name}}</text>
-          </view>
+          </view> -->
         </view>
         <view>
           <view class="weui-flex padding-bottom-10">
             <view class="weui-flex__item">
               <view class="placeholder" style="display:flex;align-items:center;">
                 <image src="{{item.img}}?imageView2/1/w/200/h/200/interlace/1/q/75" class="head-image-sma margin-left-5"></image>
-                <text class='margin-left-5 font-size-14'>{{item.level1.name}}</text>
+                <text class='margin-left-5 font-size-14' style="color:#000;">{{item.name}}</text>
               </view>
             </view>
             <view class="weui-flex__item">
@@ -34,7 +34,7 @@
             </view>
           </view>
         </view>
-      </view>
+      </view> 
     </view>
   </block>
   <!-- 循环体结束 -->

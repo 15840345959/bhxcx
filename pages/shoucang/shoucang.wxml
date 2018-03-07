@@ -15,17 +15,18 @@
         <view style="position:relative;" catchtap="onClickBihua" data-index="{{index}}">
           <image src="{{item.bihua.img}}?imageView2/1/w/600/h/300/interlace/1/q/75" class="tw-img" mode="aspectFill"></image>
           <view class="tw-img mask-div-black"></view>
-          <view class="font-size-16 tw-title text-oneline tw-title-div" style="background-image: url('../../images/text_bmask.png');">
-            <text wx:if="{{item.set_name == null}}" class="margin-left-10" style="margin-right:50px;">{{item.bihua.name}}</text>
-            <text wx:if="{{item.set_name != null}}" class="margin-left-10" style="margin-right:50px;">{{item.set_name}}</text>
-          </view>
+          <!-- <view class="font-size-16 tw-title text-oneline tw-title-div" style="background-image: url('../../images/text_bmask.png');">  
+             <text wx:if="{{item.set_name == null}}" class="margin-left-10" style="margin-right:50px;">{{item.bihua.name}}</text>
+            <text wx:if="{{item.set_name != null}}" class="margin-left-10" style="margin-right:50px;">{{item.set_name}}</text> 
+           </view> -->
         </view>
         <view>
           <view class="weui-flex padding-bottom-10">
             <view class="weui-flex__item">
               <view class="placeholder" style="display:flex;align-items:center;">
                 <image src="{{item.bihua.img}}?imageView2/1/w/200/h/200/interlace/1/q/75" class="head-image-sma margin-left-5"></image>
-                <text class='margin-left-5 font-size-14'>{{item.bihua.level1.name}}</text>
+                <text wx:if="{{item.set_name == null}}" class="margin-left-5 font-size-14" style="margin-right:50px;color:#000;">{{item.bihua.name}}</text>
+            <text wx:if="{{item.set_name != null}}" class="margin-left-5 font-size-14" style="margin-right:50px;color:#000;">{{item.set_name}}</text>
               </view>
             </view>
             <view class="weui-flex__item">
