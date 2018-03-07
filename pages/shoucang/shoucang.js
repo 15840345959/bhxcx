@@ -101,6 +101,22 @@ Page({
       console.log("错误回调")
     })
   },
+
+  //点击壁画
+  onClickBihua: function (e) {
+    console.log("onClickBihua e:" + JSON.stringify(e))
+    var index = e.currentTarget.dataset.index;
+    var favors = vm.data.favors; 
+    var img_arr = [];
+    for (var i = 0; i < favors.length; i++) {
+      img_arr.push(favors[i].bihua.img)
+    }
+    wx.previewImage({
+      current: img_arr[index], // 当前显示图片的http链接
+      urls: img_arr // 需要预览的图片http链接列表
+    })
+  },
+
   //显示弹窗
   showToast: function (e) {
     console.log("showToast" + JSON.stringify(e))
