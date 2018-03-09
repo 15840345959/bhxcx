@@ -1,6 +1,0 @@
-/* pages/lookxq/lookxq.wxss */
-.placeholder{
-    margin: 5px; 
-    text-align: center; 
-    color: #cfcfcf;
-}

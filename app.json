@@ -1,8 +1,7 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/logs/logs",
-    "pages/lookxq/lookxq",
+    "pages/logs/logs", 
     "pages/looklb/looklb",
     "pages/index_zx/index_zx",
     "pages/index_zr/index_zr",

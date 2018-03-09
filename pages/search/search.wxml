@@ -62,3 +62,36 @@
     </view>
   </view>
 </view>
+
+  <!--自定义toast  添加手机号 -->
+<view style="{{isShowFailToast?'position:fixed;':''}}">
+  <view bindtap="clickBtn" class="btn" style="display:none">button</view>
+</view> 
+<!--mask-->
+<view class="toast_mask" wx:if="{{isShowFailToast}}"></view>
+<!--以下为toast显示的内容-->
+<view class="toast_content_box" style="top:10px" wx:if="{{isShowFailToast}}">
+  <view class="toast_content">
+    <view class="toast_content_text">
+      {{toastText}}
+    </view>
+  </view>
+</view>
+<!-- 自定义toast  添加手机号结束 -->  
+
+
+  
+<view class="animation-element-wrapper font-size-14 {{showAlert ? 'hiddenScroll':''}}" style="visibility:{{showAlert ? 'visible':'hidden'}}">
+  <view style='width:80%;height:25%;margin:35% 10%;background-color:white;border-radius:10rpx;'>
+    <view class='flex-row center-style' style='border:1rpx solid #9C9C9C;width:80%;height:100rpx;margin:50rpx 10%;'>
+      <input style='height:100rpx;line-height:100rpx;margin-left:10rpx;width:300rpx;' type='text' placeholder="输入手机号继续收藏" bindinput="getInput" value='{{toast}}'></input>
+    </view>
+    <view class="placeholder">
+      <view style="text-align:center;">
+        <text style="margin-right:50px;color:#5e7dfe;" bindtap="updateById">确认</text>
+        <text style="" bindtap="hiddonToast">取消</text>
+      </view>
+    </view>
+
+  </view>
+</view>

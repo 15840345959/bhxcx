@@ -1,6 +1,6 @@
 var util = require('../../utils/util.js')
 var inputinfo = ""
-var app = getApp()
+// var app = getApp()
 var vm = null
 
 
@@ -23,7 +23,7 @@ Page({
     console.log("click_qxsc" + JSON.stringify(e))
     wx.showModal({
       title: '取消收藏',
-      content: '忍心抛弃吗>_<',
+      content: '群定取消收藏吗',
       success: function (sm) {
         if (sm.confirm) {
           //点击确定 调用删除方法
@@ -40,7 +40,7 @@ Page({
           })
 
         } else if (sm.cancel) {
-          console.log('点击了取消')
+          //console.log('点击了取消')
         }
       }
     })
@@ -87,7 +87,7 @@ Page({
       set_name: vm.data.toast//获取修改的名称 传进去
     }
     util.setBihuaName(param, function (res) {
-      console.log("setBihuaName : " + JSON.stringify(res))
+     // console.log("setBihuaName : " + JSON.stringify(res))
       if (res.data.code == "200" && res.data.result == true) {
         vm.setData({
           edit_bihua: res.data.ret
@@ -106,7 +106,7 @@ Page({
 
   //点击壁画
   onClickBihua: function (e) {
-    console.log("onClickBihua e:" + JSON.stringify(e))
+   // console.log("onClickBihua e:" + JSON.stringify(e))
     var index = e.currentTarget.dataset.index;
     var favors = vm.data.favors; 
     var img_arr = [];
@@ -121,7 +121,7 @@ Page({
 
   //显示弹窗
   showToast: function (e) {
-    console.log("showToast" + JSON.stringify(e))
+    //console.log("showToast" + JSON.stringify(e))
     vm.setData({
       id: e.currentTarget.dataset.id,
       index: e.currentTarget.dataset.index,
@@ -136,7 +136,7 @@ Page({
 
   //获取修改文字
   getInput: function (e) {
-    console.log("word" + JSON.stringify(e.detail.value))
+   // console.log("word" + JSON.stringify(e.detail.value))
     var value = e.detail.value
     vm.setData({
       toast: value//设置进去
@@ -161,7 +161,7 @@ Page({
 
   /* 点击按钮 */
   clickBtn: function () {
-    console.log("你点击了按钮")
+   // console.log("你点击了按钮")
     //设置toast时间，toast内容  
     this.setData({
       count: 2000,
@@ -199,13 +199,18 @@ Page({
 
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
+
+  //下拉刷新
   onPullDownRefresh: function () {
+    wx.showNavigationBarLoading() //在标题栏中显示加载
 
-  },
-
+    //模拟加载
+    setTimeout(function () {
+      // complete
+      wx.hideNavigationBarLoading() //完成停止加载
+      wx.stopPullDownRefresh() //停止下拉刷新
+    }, 1500);
+  }, 
   /**
    * 页面上拉触底事件的处理函数
    */

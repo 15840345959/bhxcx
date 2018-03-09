@@ -37,6 +37,7 @@
       </view>
     </view>
   </block>
-  <!-- 循环体结束 -->
+  <!-- 循环体结束 --> 
   <view style="height:10rpx;background:#fff"></view>
 </view>
+  

@@ -1,6 +1,6 @@
 /* pages/looktwoxq/looktwoxq.wxss */
 .placeholder{
-    margin: 5px; 
+    margin: 4px; 
     text-align: center; 
     color: #cfcfcf;
 }

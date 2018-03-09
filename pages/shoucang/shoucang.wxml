@@ -14,28 +14,34 @@
       <view style="margin-left:5px;margin-right:5px;border-radius:5px;" class="white-bg">
         <view style="position:relative;" catchtap="onClickBihua" data-index="{{index}}">
           <image src="{{item.bihua.img}}?imageView2/1/w/600/h/300/interlace/1/q/75" class="tw-img" mode="aspectFill"></image>
-          <view class="tw-img mask-div-black"></view> 
+          <view class="tw-img mask-div-black"></view>
         </view>
         <view>
           <view class="weui-flex padding-bottom-10">
             <view class="weui-flex__item">
               <view class="placeholder" style="display:flex;align-items:center;">
                 <image src="{{item.bihua.img}}?imageView2/1/w/200/h/200/interlace/1/q/75" class="head-image-sma margin-left-5"></image>
-                <text class="margin-left-5 font-size-14" style="margin-right:50px;color:#000;">{{item.bihua.name}}</text> 
+                <text class="margin-left-5 font-size-12" style="width:100px;margin-right:50px;color:#000;">{{item.bihua.name}}</text> 
               </view>
             </view>
-            <view class="weui-flex__item" style="position:relative;">
-              <view class="placeholder" style="position:relative;display:flex;align-items:center;float:right;padding-top:6px;" bindtap="showToast" data-index='{{index}}' data-id="{{item.id}}" data-name="{{item.bihua.name}}">
+ 
+            <view  class="weui-flex__item" bindtap="showToast" data-index='{{index}}' data-id="{{item.id}}" data-name="{{item.bihua.name}}">
+              <view class="placeholder">
                 <image src="../../images/edit.png" class="opt-icon-sma margin-right-5"></image>
-                <text class="font-size-12 grey-font" style="margin-right:90px">备注</text>
+                <text class="font-size-12 grey-font" style="">备注</text>
+
               </view>
-              <!-- 取消收藏 下方  -->
-              <image src="../../images/sc_qx.png" style="right:62px;bottom:8%;position:absolute;width:30rpx;height:30rpx;margin-bottom:6px" bindtap='click_qxsc' data-id="{{item.id}}"></image>
-              <text class="font-size-12 grey-font" style="margin-top:11px;right:10px;position:absolute" bindtap='click_qxsc' data-id="{{item.id}}">取消收藏</text>
-              <!-- 收藏按钮 -->
             </view>
-          </view> 
-<text wx:if="{{item.set_name != null}}" class="margin-left-5 grey-font font-size-14" style="margin-left:10px;">备注信息：{{item.set_name}}</text> 
+
+            <view class="weui-flex__item" bindtap='click_qxsc' data-index='{{index}}' data-id="{{item.id}}" data-name="{{item.bihua.name}}">
+              <view class="placeholder">
+                <image src="../../images/sc_qx.png" class="opt-icon-sma margin-right-5" data-id="{{item.id}}"></image>
+                <text class="font-size-12 grey-font" style="" data-id="{{item.id}}">取消</text>
+              </view>
+            </view>
+
+          </view>
+          <text wx:if="{{item.set_name != null}}" class="margin-left-5 grey-font font-size-14" style="margin-left:10px;">备注信息：{{item.set_name}}</text>
         </view>
       </view>
     </view>
@@ -61,7 +67,7 @@
 </view>
 <view class="animation-element-wrapper font-size-14 {{showAlert ? 'hiddenScroll':''}}" style="visibility:{{showAlert ? 'visible':'hidden'}}">
   <view style='width:80%;height:25%;margin:35% 10%;background-color:white;border-radius:10rpx;'>
-    <view class='flex-row center-style' style='border:1rpx solid #9C9C9C;width:80%;height:100rpx;margin:50rpx 10%;'>
+    <view class='flex-row center-style' style='border:1px solid #9C9C9C;width:80%;height:100rpx;margin:50rpx 10%;'>
       <input style='height:100rpx;line-height:100rpx;margin-left:10rpx;width:300rpx;' type='text' placeholder="给壁画进行备注吧" bindinput="getInput" value='{{toast}}'></input>
     </view>
     <view class="placeholder">

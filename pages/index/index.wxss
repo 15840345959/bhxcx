@@ -145,7 +145,7 @@ line-height:80rpx;
   border-radius:20rpx
 }
 .placeholder{
-    margin: 5px;
+    margin: 4px;
     padding: 0 8px;
     text-align: center; 
     color: #cfcfcf;
