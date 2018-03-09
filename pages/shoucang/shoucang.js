@@ -71,7 +71,9 @@ Page({
           })
           console.log("未收藏的提示页面")
         } else {//如果有数据
+          vm.setData({ 
           no_view_hidden: "hidden"//so隐藏 未收藏的提示页面
+          }) 
         }
       }
     }, function () {
