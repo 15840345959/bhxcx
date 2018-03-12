@@ -182,6 +182,7 @@ Page({
     wx.previewImage({
       current: img_arr[index], // 当前显示图片的http链接
       urls: img_arr // 需要预览的图片http链接列表
+      // urls: [img_arr[index]] // 需要当前预览的图片http链接
     })
   },
 

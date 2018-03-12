@@ -178,6 +178,22 @@ Page({
       }
     //}
   },
+  //点击壁画
+  onClickBihua: function (e) {
+    // console.log("onClickBihua e:" + JSON.stringify(e))
+    var index = e.currentTarget.dataset.index;
+    var favors = vm.data.bihuas;
+    var img_arr = [];
+    for (var i = 0; i < favors.length; i++) {
+      img_arr.push(favors[i].bihua.img)
+    }
+    wx.previewImage({
+      current: img_arr[index], // 当前显示图片的http链接
+      urls: img_arr // 需要预览的图片http链接列表
+      // urls: [img_arr[index]] // 需要当前预览的图片http链接
+
+    })
+  },
 
   //更新用户信息添加手机号 
   // updateById: function () {

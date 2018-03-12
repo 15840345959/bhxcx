@@ -21,27 +21,22 @@
             <view class="weui-flex__item">
               <view class="placeholder" style="display:flex;align-items:center;">
                 <image src="{{item.bihua.img}}?imageView2/1/w/200/h/200/interlace/1/q/75" class="head-image-sma margin-left-5"></image>
-                <text class="margin-left-5 font-size-12" style="width:100px;margin-right:50px;color:#000;">{{item.bihua.name}}</text> 
+                <text class='margin-left-5 font-size-14' style="color:#000;">{{item.bihua.name}}</text>
               </view>
             </view>
- 
-            <view  class="weui-flex__item" bindtap="showToast" data-index='{{index}}' data-id="{{item.id}}" data-name="{{item.bihua.name}}">
-              <view class="placeholder">
+  
+              <view class="placeholder" bindtap="showToast" data-index='{{index}}' data-id="{{item.id}}" data-name="{{item.bihua.name}}" style="display:flex;align-items:center;float:right;padding-top:6px;margin-right:15px" >
                 <image src="../../images/edit.png" class="opt-icon-sma margin-right-5"></image>
-                <text class="font-size-12 grey-font" style="">备注</text>
-
-              </view>
-            </view>
-
-            <view class="weui-flex__item" bindtap='click_qxsc' data-index='{{index}}' data-id="{{item.id}}" data-name="{{item.bihua.name}}">
-              <view class="placeholder">
+                <text class="font-size-12 grey-font" style="">备注</text> 
+              </view> 
+ 
+              <view class="placeholder" bindtap='click_qxsc' data-index='{{index}}' data-id="{{item.id}}" data-name="{{item.bihua.name}}" style="display:flex;align-items:center;float:right;padding-top:6px;margin-right:20px" >
                 <image src="../../images/sc_qx.png" class="opt-icon-sma margin-right-5" data-id="{{item.id}}"></image>
                 <text class="font-size-12 grey-font" style="" data-id="{{item.id}}">取消</text>
-              </view>
-            </view>
+              </view> 
 
           </view>
-          <text wx:if="{{item.set_name != null}}" class="margin-left-5 grey-font font-size-14" style="margin-left:10px;">备注信息：{{item.set_name}}</text>
+          <text wx:if="{{item.set_name != null}}" class="margin-left-5 grey-font font-size-14" style="margin-left:10px;line-height:50px">备注信息：{{item.set_name}}</text>
         </view>
       </view>
     </view>
